@@ -1,25 +1,36 @@
 <?php 
-$id_awal = 0;
-$id_akhir = 1000;
+$id_awal = 1;
+$id_akhir = 10000;
 $acak =rand($id_awal, $id_akhir);
 
 $nama = $_POST['nama'];
-$checkin = date('d-m-yy',strtotime($_POST['checkin']));
+$checkin = date('d/m/yy',strtotime($_POST['checkin']));
 $duration = $_POST['duration'];
-$checkout = date_add($checkin, date_interval_create_from_date_string($duration));
+
+$start = new DateTimeImmutable($_POST['checkin']);
+$checkout = $start->modify('+'.$duration.' days');
 
 $tipe = $_POST['type'];
-    if ($tipe == 'Standard') {
-        $harga = 90;
-    }elseif($tipe == 'Superior'){
-        $harga = 150;
-    }elseif($tipe == 'Luxury'){
-        $harga = 200;
-    }
 $hp = $_POST['hp'];
 $service = $_POST['service'];
-$tot_serv = $service1 + $service2;
-$total = ($duration * $tipe) + ($duration * $tot_serv); 
+
+if ($tipe == 'Standard') {
+    $harga = 90;
+}elseif($tipe == 'Superior'){
+    $harga = 150;
+}elseif($tipe == 'Luxury'){
+    $harga = 200;
+}
+$harga_serv=0;
+foreach($service as $key => $value){
+    if($value == "Breakfast"){
+        $harga_serv += 20;
+    }
+    if($value == "Room Service"){
+        $harga_serv += 20;
+    }
+}
+$total = ($harga * $duration) + $harga_serv;
 ?>
 
 <!doctype html>
@@ -42,8 +53,8 @@ $total = ($duration * $tipe) + ($duration * $tot_serv);
         <div class="container">
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.php">Home</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="booking.php">Booking</a>
@@ -69,14 +80,21 @@ $total = ($duration * $tipe) + ($duration * $tot_serv);
             </thead>
             <tbody>
                 <tr>
+
                     <th scope="row"><?=$acak ?></th>
                     <td><?=$nama ?></td>
                     <td><?=$checkin ?></td>
-                    <td><?=$checkout ?></td>
+                    <td><?=$checkout->format('d/m/yy') ?></td>
                     <td><?=$tipe ?></td>
                     <td><?=$hp ?></td>
-                    <td><?=$service?></td>
-                    <td><?=$total?></td>
+                    <td>
+                        <ul>
+                            <?php foreach($service as $key => $value): ?>
+                            <li><?=$value ?></li>
+                            <?php endforeach;?>
+                        </ul>
+                    </td>
+                    <td>$ <?=$total?></td>
                 </tr>
             </tbody>
         </table>

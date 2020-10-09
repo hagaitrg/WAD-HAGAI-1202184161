@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label for="type">Room Type</label>
                         <select class="custom-select" name="type" required>
-                            <option selected disabled value="Standard">Standard</option>
+                            <option value="Standard">Standard</option>
                             <option value="Superior">Superior</option>
                             <option value="Luxury">Luxury</option>
                         </select>
@@ -59,12 +59,12 @@
                     </div>
                     <small>$ 20/Service</small>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="service" value="Room Service">
-                        <label class="form-check-label" for="Room Service">Room Service</label>
+                        <input type="checkbox" class="form-check-input" name="service[]" value="Room Service">
+                        <label class="form-check-label" for="service">Room Service</label>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="service" value="Breakfast">
-                        <label class="form-check-label" for="Breakfast">Breakfast</label>
+                        <input type="checkbox" class="form-check-input" name="service[]" value="Breakfast">
+                        <label class="form-check-label" for="service">Breakfast</label>
                     </div>
                     <div class="form-group">
                         <label for="no hp">Phone Number</label>
