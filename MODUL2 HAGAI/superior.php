@@ -32,41 +32,41 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
-                <form class="mt-5" method="post">
+                <form class="mt-5" action="mybooking.php" method="post">
                     <div class="form-group">
                         <label for="nama">Name</label>
-                        <input type="text" class="form-control" id="nama">
+                        <input type="text" class="form-control" name="nama">
                     </div>
                     <div class="form-group">
                         <label for="checkin">Check-in</label>
-                        <input type="date" class="form-control" id="checkin" placeholder="dd/mm/yyyy">
+                        <input type="date" class="form-control" name="checkin">
                     </div>
                     <div class="form-group">
                         <label for="duration">Duration</label>
-                        <input type="text" class="form-control" id="duration">
+                        <input type="text" class="form-control" name="duration">
                         <small>Day(S)</small>
                     </div>
                     <div class="form-group">
                         <label for="type">Room Type</label>
-                        <input type="text" class="form-control" id="type" placeholder="Superior" value="Superior" disabled>
+                        <input type="text" class="form-control" name="type" value="Superior" readonly>
                     </div>
                     <div>
                         <p>Add Services(S)</p>
                     </div>
                     <small>$ 20/Service</small>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="rmser">
-                        <label class="form-check-label" for="Room Service">Room Service</label>
+                        <input type="checkbox" class="form-check-input" name="service[]" value="Room Service">
+                        <label class="form-check-label" for="service">Room Service</label>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="breakfast">
-                        <label class="form-check-label" for="Breakfast">Breakfast</label>
+                        <input type="checkbox" class="form-check-input" name="service[]" value="Breakfast">
+                        <label class="form-check-label" for="service">Breakfast</label>
                     </div>
                     <div class="form-group">
                         <label for="no hp">Phone Number</label>
-                        <input type="text" class="form-control" id="hp">
+                        <input type="text" class="form-control" name="hp">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Book</button>
+                    <input type="submit" class="btn btn-primary btn-block" name="tekan" value="Book">
                 </form>
             </div>
             <div class="col-sm-6">
