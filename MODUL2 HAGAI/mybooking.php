@@ -1,36 +1,43 @@
 <?php 
-$id_awal = 1;
-$id_akhir = 10000;
-$acak =rand($id_awal, $id_akhir);
 
-$nama = $_POST['nama'];
-$checkin = date('d/m/yy',strtotime($_POST['checkin']));
-$duration = $_POST['duration'];
+$flag = false;
 
-$start = new DateTimeImmutable($_POST['checkin']);
-$checkout = $start->modify('+'.$duration.' days');
+if (isset($_POST['tekan'])) {
+    $id_awal = 1;
+    $id_akhir = 10000;
+    $acak =rand($id_awal, $id_akhir);
 
-$tipe = $_POST['type'];
-$hp = $_POST['hp'];
-$service = $_POST['service'];
+    $nama = $_POST['nama'];
+    $checkin = date('d/m/yy',strtotime($_POST['checkin']));
+    $duration = $_POST['duration'];
 
-if ($tipe == 'Standard') {
-    $harga = 90;
-}elseif($tipe == 'Superior'){
-    $harga = 150;
-}elseif($tipe == 'Luxury'){
-    $harga = 200;
-}
-$harga_serv=0;
-foreach($service as $key => $value){
-    if($value == "Breakfast"){
-        $harga_serv += 20;
+    $start = new DateTimeImmutable($_POST['checkin']);
+    $checkout = $start->modify('+'.$duration.' days');
+
+    $tipe = $_POST['type'];
+    $hp = $_POST['hp'];
+    $service = $_POST['service'];
+
+    if ($tipe == 'Standard') {
+        $harga = 90;
+    }elseif($tipe == 'Superior'){
+        $harga = 150;
+    }elseif($tipe == 'Luxury'){
+        $harga = 200;
     }
-    if($value == "Room Service"){
-        $harga_serv += 20;
+
+    $harga_serv=0;
+    foreach($service as $key => $value){
+        if($value == "Breakfast"){
+            $harga_serv += 20;
+        }
+        if($value == "Room Service"){
+            $harga_serv += 20;
+        }
     }
+    $total = ($harga * $duration) + $harga_serv;
+    $flag = true;
 }
-$total = ($harga * $duration) + $harga_serv;
 ?>
 
 <!doctype html>
@@ -80,7 +87,7 @@ $total = ($harga * $duration) + $harga_serv;
             </thead>
             <tbody>
                 <tr>
-
+                    <?php if($flag){ ?>
                     <th scope="row"><?=$acak ?></th>
                     <td><?=$nama ?></td>
                     <td><?=$checkin ?></td>
@@ -95,6 +102,7 @@ $total = ($harga * $duration) + $harga_serv;
                         </ul>
                     </td>
                     <td>$ <?=$total?></td>
+                    <?php } ?>
                 </tr>
             </tbody>
         </table>

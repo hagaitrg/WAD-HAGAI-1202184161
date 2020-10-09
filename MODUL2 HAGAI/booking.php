@@ -70,7 +70,7 @@
                         <label for="no hp">Phone Number</label>
                         <input type="text" class="form-control" name="hp">
                     </div>
-                    <input type="submit" class="btn btn-primary btn-block" value="Book">
+                    <input type="submit" class="btn btn-primary btn-block" name="tekan" value="Book">
                 </form>
             </div>
             <div class="col-sm-6">
