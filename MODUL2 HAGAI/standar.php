@@ -35,15 +35,15 @@
                 <form class="mt-5" action="mybooking.php" method="post">
                     <div class="form-group">
                         <label for="nama">Name</label>
-                        <input type="text" class="form-control" name="nama">
+                        <input type="text" class="form-control" name="nama" required>
                     </div>
                     <div class="form-group">
                         <label for="checkin">Check-in</label>
-                        <input type="date" class="form-control" name="checkin">
+                        <input type="date" class="form-control" name="checkin" required>
                     </div>
                     <div class="form-group">
                         <label for="duration">Duration</label>
-                        <input type="text" class="form-control" name="duration">
+                        <input type="text" class="form-control" name="duration"required>
                         <small>Day(S)</small>
                     </div>
                     <div class="form-group">
@@ -64,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <label for="no hp">Phone Number</label>
-                        <input type="text" class="form-control" name="hp">
+                        <input type="text" class="form-control" name="hp" required>
                     </div>
                     <input type="submit" class="btn btn-primary btn-block" name="tekan" value="Book">
                 </form>
