@@ -38,9 +38,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="card shadow bg-white rounded">
-                    <img src="./img/standar.jpg" class="card-img-top" height="300px" width="300px" name="img1">
+                    <img src="./img/standar.jpg" class="card-img-top" height="300px" width="300px" name="img">
                     <div class="card-body">
-                        <h5 class="card-title text-center" name="standar">Standard</h5>
+                        <h5 class="card-title text-center">Standard</h5>
                         <h5 class="card-title text-primary text-center mb-4">$ 90/Day</h5>
                         <div class="card-header text-center">
                             Facilities
@@ -51,7 +51,8 @@
                         </ul>
                     </div>
                     <div class="card-footer text-center mt-4">
-                        <a href="standar.php" class="btn btn-primary btn-sm active" role="button">Book Now</a>
+                        <a href="booking.php?type=<?php echo'Standard&img=standar'?>"><button type="button"
+                                class="btn btn-primary">Book Now</button></a>
                     </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@
                         </ul>
                     </div>
                     <div class="card-footer text-center mt-4">
-                        <a href="superior.php" class="btn btn-primary btn-sm active" role="button">Book Now</a>
+                        <a href="booking.php?type=<?php echo'Superior&img=superior'?>"><button type="button" class="btn btn-primary">Book Now</button></a>
                     </div>
                 </div>
             </div>
@@ -93,7 +94,7 @@
                         </ul>
                     </div>
                     <div class="card-footer text-center mt-4">
-                        <a href="luxury.php" class="btn btn-primary btn-sm active" role="button">Book Now</a>
+                        <a href="booking.php?type=<?php echo'Luxury&img=luxury'?>"><button type="button" class="btn btn-primary">Book Now</button></a>
                     </div>
                 </div>
             </div>

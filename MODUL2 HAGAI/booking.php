@@ -52,21 +52,39 @@
                     </div>
                     <div class="form-group">
                         <label for="type">Room Type</label>
+                        <?php if (empty($_GET['type'])){?>
                         <select class="custom-select" id="imgset" onchange="javascript:flip();" name="type" required>
                             <option value="Standard" url="./img/standar.jpg"">
                                 Standard</option>
-                            <option value="Superior" url="./img/superior.jpg"">
+                            <option value=" Superior" url="./img/superior.jpg"">
                                 Superior</option>
-                            <option value="Luxury" url="./img/luxury.jpg"">Luxury</option>
+                            <option value=" Luxury" url="./img/luxury.jpg"">Luxury</option>
                         </select>
+                        <?php } else{
+                            $type = $_GET['type'];
+                            $check = is_null($type);
+                            if ($check != 1) {
+                                echo'<input type="text" class="form-control" name="type" value="'.$type.'" readonly>';
+                            }else{
+                                echo '
+                                <select class="custom-select" id="imgset" onchange="javascript:flip();" name="type" required>
+                                    <option value="Standard" url="./img/standar.jpg"">
+                                        Standard</option>
+                                    <option value="Superior" url="./img/superior.jpg"">
+                                        Superior</option>
+                                    <option value="Luxury" url="./img/luxury.jpg"">Luxury</option>
+                                </select>';
+                            }
+
+                        } ?>
                     </div>
                     <div>
                         <p>Add Services(S)</p>
                     </div>
                     <small>$ 20/Service</small>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="service[]" value="Room Service">
-                        <label class="form-check-label" for="service">Room Service</label>
+                    <div class=" form-group form-check">
+                                <input type="checkbox" class="form-check-input" name="service[]" value="Room Service">
+                                <label class="form-check-label" for="service">Room Service</label>
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" name="service[]" value="Breakfast">
@@ -81,16 +99,20 @@
             </div>
             <div class="col-sm-6">
                 <div class="container ml-5">
-                    <img src="./img/standar.jpg" class="mt-5" width="500px" height="500px" id="img">
+                    <?php if (empty($_GET['img'])) {
+                        echo '<img src="./img/standar.jpg" class="mt-5" width="500px" height="500px" id="img">'; 
+                    }else{
+                        echo '<img src="./img/'.$_GET['img'].'.jpg" class="mt-5" width="500px" height="500px" id="img">';
+                    }?>
                 </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript" language='javascript'>
-        // place this after <body> to run it after body has loaded.
-        var myimage = document.getElementById('img');
-        var ColorSelect = document.getElementById('imgset');
+    // place this after <body> to run it after body has loaded.
+    var myimage = document.getElementById('img');
+    var ColorSelect = document.getElementById('imgset');
     </script>
 
     <!-- Optional JavaScript -->
@@ -105,5 +127,4 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
 </body>
-
 </html>

@@ -38,11 +38,6 @@ if (isset($_POST['tekan'])) {
     $total = ($harga * $duration) + $harga_serv;
     $flag = true;
 }
-
-// if (empty($_POST['nama'])) {
-//     header('Location: booking.php');
-// }
-
 ?>
 
 <!doctype html>
