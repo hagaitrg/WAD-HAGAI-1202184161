@@ -16,7 +16,6 @@ if (isset($_POST['tekan'])) {
 
     $tipe = $_POST['type'];
     $hp = $_POST['hp'];
-    $service = $_POST['service'];
 
     if ($tipe == 'Standard') {
         $harga = 90;
@@ -27,15 +26,22 @@ if (isset($_POST['tekan'])) {
     }
 
     $harga_serv=0;
-    foreach($service as $key => $value){
-        if($value == "Breakfast"){
-            $harga_serv += 20;
+
+    if (!empty($_POST['service'])) {
+        $service = $_POST['service'];
+        foreach($service as $key => $value){
+            if($value == "Breakfast"){
+                $harga_serv += 20;
+            }
+            if($value == "Room Service"){
+                $harga_serv += 20;
+            }
         }
-        if($value == "Room Service"){
-            $harga_serv += 20;
-        }
+        $total = ($harga * $duration) + $harga_serv;
+    }else{
+        $total = ($harga * $duration);
     }
-    $total = ($harga * $duration) + $harga_serv;
+    
     $flag = true;
 }
 ?>
@@ -95,10 +101,14 @@ if (isset($_POST['tekan'])) {
                     <td><?=$tipe ?></td>
                     <td><?=$hp ?></td>
                     <td>
+                        <?php if(empty($_POST['service'])) {?>
+                        <?="No Service"?>
                         <ul>
+                            <?php } else{?>
                             <?php foreach($service as $key => $value): ?>
                             <li><?=$value ?></li>
                             <?php endforeach;?>
+                            <?php } ?>
                         </ul>
                     </td>
                     <td>$ <?=$total?></td>
