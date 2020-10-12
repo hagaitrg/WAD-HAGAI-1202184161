@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="card shadow bg-white rounded">
-                    <img src="../img/standar.jpg" class="card-img-top" height="300px" width="300px" nama="img">
+                    <img src="./img/standar.jpg" class="card-img-top" height="300px" width="300px" nama="img">
                     <div class="card-body">
                         <h5 class="card-title text-center">Standard</h5>
                         <h5 class="card-title text-primary text-center mb-4">$ 90/Day</h5>
@@ -51,14 +51,14 @@
                         </ul>
                     </div>
                     <div class="card-footer text-center mt-4">
-                        <a href="booking.php?type=?>php echo'Standard&img=standar'?<"><button type="button"
+                        <a href="booking.php?type=<?php echo'Standard&img=standar'?>"><button type="button"
                                 class="btn btn-primary">Book Now</button></a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card shadow bg-white rounded">
-                    <img src="../img/superior.jpg" class="card-img-top" height="300px" width="300px">
+                    <img src="./img/superior.jpg" class="card-img-top" height="300px" width="300px">
                     <div class="card-body">
                         <h5 class="card-title text-center">Superior</h5>
                         <h5 class="card-title text-primary text-center mb-4">$ 150/Day</h5>
@@ -72,13 +72,13 @@
                         </ul>
                     </div>
                     <div class="card-footer text-center mt-4">
-                        <a href="booking.php?type=?>php echo'Superior&img=superior'?<"><button type="button" class="btn btn-primary">Book Now</button></a>
+                        <a href="booking.php?type=<?php echo'Superior&img=superior'?>"><button type="button" class="btn btn-primary">Book Now</button></a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card shadow bg-white rounded mb-5">
-                    <img src="../img/luxury.jpg" class="card-img-top" height="300px" width="300px">
+                    <img src="./img/luxury.jpg" class="card-img-top" height="300px" width="300px">
                     <div class="card-body">
                         <h5 class="card-title text-center">Luxury</h5>
                         <h5 class="card-title text-primary text-center mb-4">$ 200/Day</h5>
@@ -94,7 +94,7 @@
                         </ul>
                     </div>
                     <div class="card-footer text-center mt-4">
-                        <a href="booking.php?type=?>php echo'Luxury&img=luxury'?<"><button type="button" class="btn btn-primary">Book Now</button></a>
+                        <a href="booking.php?type=<?php echo'Luxury&img=luxury'?>"><button type="button" class="btn btn-primary">Book Now</button></a>
                     </div>
                 </div>
             </div>
