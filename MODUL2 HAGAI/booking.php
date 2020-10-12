@@ -36,43 +36,43 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
-                <form class="mt-5" action="mybooking.php" method="post">
+                <form class="mt-5" action="mybooking.php" method="get">
                     <div class="form-group">
                         <label for="nama">Name</label>
-                        <input type="text" class="form-control" name="nama" required>
+                        <input type="text" class="form-control" nama="nama" required>
                     </div>
                     <div class="form-group">
                         <label for="checkin">Check-in</label>
-                        <input type="date" class="form-control" name="checkin" required>
+                        <input type="number" class="form-control" nama="checkin" required>
                     </div>
                     <div class="form-group">
                         <label for="duration">Duration</label>
-                        <input type="text" class="form-control" name="duration" required>
+                        <input type="text" class="form-control" nama="duration" required>
                         <small>Day(S)</small>
                     </div>
                     <div class="form-group">
                         <label for="type">Room Type</label>
                         <?php if (empty($_GET['type'])){?>
-                        <select class="custom-select" id="imgset" onchange="javascript:flip();" name="type" required>
-                            <option value="Standard" url="./img/standar.jpg"">
+                        <select class="custom-select" id="imgset" onchange="javascript:flip();" nama="type" required>
+                            <option value="Standard" url="../img/standar.jpg">
                                 Standard</option>
-                            <option value=" Superior" url="./img/superior.jpg"">
+                            <option value=" Superior" url="../img/superior.jpg">
                                 Superior</option>
-                            <option value=" Luxury" url="./img/luxury.jpg"">Luxury</option>
+                            <option value=" Luxury" url="../img/luxury.jpg">Luxury</option>
                         </select>
                         <?php } else{
                             $type = $_GET['type'];
                             $check = is_null($type);
                             if ($check != 1) {
-                                echo'<input type="text" class="form-control" name="type" value="'.$type.'" readonly>';
+                                echo'<input type="text" class="form-control" nama="type" value="'.$type.'">';
                             }else{
                                 echo '
-                                <select class="custom-select" id="imgset" onchange="javascript:flip();" name="type" required>
-                                    <option value="Standard" url="./img/standar.jpg"">
+                                <select class="custom-select" id="imgset" onchange="javascript:flip();" nama="type" required>
+                                    <option value="Standard" url="../img/standar.jpg"">
                                         Standard</option>
-                                    <option value="Superior" url="./img/superior.jpg"">
+                                    <option value="Superior" url="../img/superior.jpg"">
                                         Superior</option>
-                                    <option value="Luxury" url="./img/luxury.jpg"">Luxury</option>
+                                    <option value="Luxury" url="../img/luxury.jpg"">Luxury</option>
                                 </select>';
                             }
 
@@ -83,26 +83,26 @@
                     </div>
                     <small>$ 20/Service</small>
                     <div class=" form-group form-check">
-                                <input type="checkbox" class="form-check-input" name="service[]" value="Room Service">
+                                <input type="checkbox" class="form-check-input" nama="service[]" value="Room Service">
                                 <label class="form-check-label" for="service">Room Service</label>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="service[]" value="Breakfast">
+                        <input type="checkbox" class="form-check-input" nama="service[]" value="Breakfast">
                         <label class="form-check-label" for="service">Breakfast</label>
                     </div>
                     <div class="form-group">
                         <label for="no hp">Phone Number</label>
-                        <input type="text" class="form-control" name="hp" required>
+                        <input type="text" class="form-control" nama="hp" required>
                     </div>
-                    <input type="submit" class="btn btn-primary btn-block" name="tekan" value="Book">
+                    <input type="button" class="btn btn-primary btn-block" nama="tekan" value="Book">
                 </form>
             </div>
             <div class="col-sm-6">
                 <div class="container ml-5">
                     <?php if (empty($_GET['img'])) {
-                        echo '<img src="./img/standar.jpg" class="mt-5" width="500px" height="500px" id="img">'; 
+                        echo '<img src="../img/standar.jpg" class="mt-5" width="500px" height="500px" id="img">'; 
                     }else{
-                        echo '<img src="./img/'.$_GET['img'].'.jpg" class="mt-5" width="500px" height="500px" id="img">';
+                        echo '<img src="../img/'.$_GET['img'].'.jpg" class="mt-5" width="500px" height="500px" id="img">';
                     }?>
                 </div>
             </div>

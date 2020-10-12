@@ -8,20 +8,20 @@ if (isset($_POST['tekan'])) {
     $acak =rand($id_awal, $id_akhir);
 
     $nama = $_POST['nama'];
-    $checkin = date('d/m/yy',strtotime($_POST['checkin']));
+    $checkin = date('d/m/yy',strtotime($_POST['chekin']));
     $duration = $_POST['duration'];
 
-    $start = new DateTimeImmutable($_POST['checkin']);
+    $start = new DateTimeImmutable($_POST['chekin']);
     $checkout = $start->modify('+'.$duration.' days');
 
     $tipe = $_POST['type'];
     $hp = $_POST['hp'];
 
-    if ($tipe == 'Standard') {
+    if ($tipe == 'standard') {
         $harga = 90;
-    }elseif($tipe == 'Superior'){
+    }elseif($tipe == 'superior'){
         $harga = 150;
-    }elseif($tipe == 'Luxury'){
+    }elseif($tipe == 'suxury'){
         $harga = 200;
     }
 
@@ -96,8 +96,8 @@ if (isset($_POST['tekan'])) {
                     <?php if($flag){ ?>
                     <th scope="row"><?=$acak ?></th>
                     <td><?=$nama ?></td>
-                    <td><?=$checkin ?></td>
-                    <td><?=$checkout->format('d/m/yy') ?></td>
+                    <td><?=$chekin ?></td>
+                    <td><?=$chekout->format('d/m/yy') ?></td>
                     <td><?=$tipe ?></td>
                     <td><?=$hp ?></td>
                     <td>
@@ -111,7 +111,7 @@ if (isset($_POST['tekan'])) {
                             <?php } ?>
                         </ul>
                     </td>
-                    <td>$ <?=$total?></td>
+                    <td>$ <?=$totaltype?></td>
                     <?php } ?>
                 </tr>
             </tbody>
