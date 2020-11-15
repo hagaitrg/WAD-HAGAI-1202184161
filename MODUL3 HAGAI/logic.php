@@ -5,7 +5,7 @@ class logic
     var $host = "localhost";
     var $username = "root";
     var $pwd = "";
-    var $db = "studi_kasus";
+    var $db = "wad_modul3_hagai";
     var $conn = "";
 
     function __construct()
