@@ -1,4 +1,5 @@
 <?php
+include("logic.php");
 $konek = new logic();
 
 $data = $konek->read();
@@ -41,6 +42,7 @@ $data = $konek->read();
 
         <?php if ($data > 0) { ?>
             <div class="row mt-5">
+                <?php foreach ($data as $value => $d) : ?>
                     <div class="col-md-4">
                         <div class="card shadow" style="width: 20rem; height:100%;">
                             <img src="./assets/img/<?= $d['gambar'] ?>" class="card-img-top" alt="" width="250px" height="250px">
@@ -67,7 +69,8 @@ $data = $konek->read();
                             </div>
                         </div>
                     </div>
-               </div>
+                <?php endforeach; ?>
+            </div>
         <?php } else { ?>
             <div class="row">
                 <h6 class="mt-5">No Events Found</h6>

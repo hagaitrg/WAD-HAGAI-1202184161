@@ -1,5 +1,5 @@
 <?php
-
+include("logic.php");
 $konek = new logic();
 
 if (isset($_POST['submit'])) {

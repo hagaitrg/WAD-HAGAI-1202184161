@@ -18,7 +18,7 @@ class logic
 
     function read()
     {
-        $data = mysqli_query($this->conn, "modul3_crud");
+        $data = mysqli_query($this->conn, "select * from modul3_crud");
         while ($row = mysqli_fetch_array($data)) {
             $result[] = $row;
         }
@@ -38,7 +38,7 @@ class logic
 
         $tgl = date('y/m/d');
 
-        mysqli_query($this->conn, "modul3_crud(name,deskripsi,gambar,kategori,tanggal,mulai,berakhir,tempat,harga,benefit) 
+        mysqli_query($this->conn, "insert into modul3_crud(name,deskripsi,gambar,kategori,tanggal,mulai,berakhir,tempat,harga,benefit) 
         values ('$nama','$desc','$gambar','$kategori','$tgl','$mulai','$selesai','$tempat','$harga','$benefit')");
         return mysqli_affected_rows($this->conn);
     }
@@ -77,13 +77,13 @@ class logic
 
     function get_id($id)
     {
-        $get = mysqli_query($this->conn, "select * from modul3_crud = '$id'");
+        $get = mysqli_query($this->conn, "select * from modul3_crud where id = '$id'");
         return $get->fetch_array();
     }
 
     function delete($id)
     {
-        mysqli_query($this->conn, "delete from modul3_crud = '$id'");
+        mysqli_query($this->conn, "delete from modul3_crud where id = '$id'");
         return mysqli_affected_rows($this->conn);
     }
 
@@ -95,8 +95,9 @@ class logic
             return false;
         }
 
-        mysqli_query($this->conn, "UPDATE modul3_crud 
-        name = '$nama', deskripsi='$desc', gambar ='$gambar', kategori = '$kategori', tanggal = '$tgl', mulai='$mulai',berakhir='$selesai', tempat='$tempat', harga='$harga', benefit='$benefit' WHERE id = '$id' ");
+        mysqli_query($this->conn, "UPDATE modul3_crud  
+        SET name = '$nama', deskripsi='$desc', gambar ='$gambar', kategori = '$kategori', tanggal = '$tgl', mulai='$mulai',berakhir='$selesai', tempat='$tempat', harga='$harga', benefit='$benefit' 
+        WHERE id = '$id' ");
         return mysqli_affected_rows($this->conn);
     }
 }

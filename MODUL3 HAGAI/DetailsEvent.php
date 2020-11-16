@@ -1,4 +1,6 @@
 <?php
+include("logic.php");
+
 $db = new logic;
 $id = $_GET['id'];
 
@@ -121,11 +123,11 @@ if (isset($_POST['edit'])) {
         <div class="row">
             <form action="" method="post">
                 <div class="card ml-5 mr-5 mb-5 shadow mt-3">
-                    <img src="./assets/img/" class="card-img-top" alt="" height="500px">
+                    <img src="./assets/img/<?= $get_id['gambar'] ?>" class="card-img-top" alt="" height="500px">
                     <div class="card-body">
                         <h3 class="card-title"></h3>
                         <h6 class="mt-4 h6">Deskripsi</h6>
-                        <p class="card-text"></p>
+                        <p class="card-text"><?= $get_id['deskripsi'] ?></p>
                         <div class="row">
                             <div class="col-md-6">
                                 <h6 class="h6">Informasi Event</h6>
