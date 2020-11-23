@@ -1,12 +1,8 @@
 <?php
 
-session_start();
-
-if (session_destroy()) {
-    setcookie('login', '', time() - 3600);
-    $flag = true;
+if (session_abort()) {
+    setsession('login', '', time() - 3600);
 }
-
 
 ?>
 <!doctype html>

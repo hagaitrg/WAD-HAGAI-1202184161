@@ -1,7 +1,6 @@
 <?php
-session_start();
 
-include("logic.php");
+include("login.php");
 
 $db = new logic();
 
@@ -9,7 +8,7 @@ if (isset($_SESSION['email'])) {
     $nama = $_SESSION['nama'];
     $id = $_SESSION['id'];
 } else {
-    header("Location:login.php");
+    header("Location:profile.php");
 }
 
 if (!is_null($id)) {
@@ -25,14 +24,11 @@ if (isset($_POST['edit'])) {
 
     $edit = $db->edit($id, $nama, $email, $hp, $pwd, $warna);
 
-    $flag = false;
-
     if ($edit > 0) {
-        $flag = true;
     }
 }
 
-$nav = $_COOKIE['colors'] ?? 'light';
+$nav = $_SESSION['color'] ?? 'light';
 
 ?>
 

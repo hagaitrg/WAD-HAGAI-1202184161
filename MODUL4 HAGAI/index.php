@@ -1,29 +1,27 @@
 <?php
-session_start();
 include("logic.php");
 
 $db = new logic();
 
-if (isset($_SESSION['email'])) {
-    $nama = $_SESSION['nama'];
+if (isset($_COOKIE['email'])) {
+    $nama = $_COOKIE['nama'];
 } else {
-    header("Location:login.php");
+    header("Location:index.php");
 }
 
 
 if (isset($_POST['tambah'])) {
-    $id = $_SESSION['id'];
+    $id = $_COOKIE['id'];
     $barang = $_POST['barang'];
     $harga = $_POST['harga'];
 
     $cek = $db->create_cart($id, $barang, $harga);
 
     if ($cek > 0) {
-        $flag = true;
     }
 }
 
-$nav = $_COOKIE['colors'] ?? 'light';
+$nav = $_REQUEST['color'] ?? 'light';
 
 ?>
 
