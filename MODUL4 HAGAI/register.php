@@ -1,10 +1,14 @@
 <?php
 
+include("logic.php");
+
+$db = new logic();
+
 if (isset($_POST['regis'])) {
     if ($db->registrasi($_POST) > 0) {
         $coba = true;
     } else {
-        echo mysqli($db->conn);
+        echo mysqli_error($db->conn);
     }
 }
 

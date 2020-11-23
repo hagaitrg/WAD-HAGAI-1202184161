@@ -1,12 +1,14 @@
 <?php
+session_start();
+
 include("logic.php");
 
 $db = new logic();
 
-if (isset($_COOKIE['email'])) {
-    $nama = $_COOKIE['nama'];
+if (isset($_SESSION['email'])) {
+    $nama = $_SESSION['nama'];
 } else {
-    header("Location:cart.php");
+    header("Location:login.php");
 }
 
 $cart = $db->read();
@@ -16,11 +18,12 @@ if (isset($_POST['delete'])) {
 
     $del = $db->delete($id);
     if ($del > 0) {
+        $flag = true;
     }
 }
 $no = 1;
 
-$nav = $_REQUEST['color'] ?? 'light';
+$nav = $_COOKIE['colors'] ?? 'light';
 ?>
 
 <!doctype html>
@@ -94,7 +97,7 @@ $nav = $_REQUEST['color'] ?? 'light';
                         <?php foreach ($cart as $value => $c) : ?>
                             <input type="hidden" name="id" value="<?= $c['id'] ?>">
                             <tr>
-                                <th scope="row"><?= $no-- ?></th>
+                                <th scope="row"><?= $no++ ?></th>
                                 <td><?= $c['nama_barang'] ?></td>
                                 <td><?= $c['harga'] ?></td>
                                 <td><button type="submit" class="btn btn-danger" name="delete">Hapus</button></td>

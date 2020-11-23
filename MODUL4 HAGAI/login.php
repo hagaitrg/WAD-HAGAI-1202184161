@@ -1,13 +1,17 @@
 <?php
+session_start();
 
-if (isset($_REQUEST['login'])) {
-    if ($_REQUEST['login'] == 'true') {
+$db = mysqli_connect("localhost", "root", "", "wad_modul4");
+
+
+if (isset($_COOKIE['login'])) {
+    if ($_COOKIE['login'] == 'true') {
         $_SESSION['login'] = true;
     }
 }
 
 if (isset($_SESSION['login'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -17,17 +21,18 @@ if (isset($_POST['login'])) {
     $pwd = $_POST['password'];
 
     $login = mysqli_query($db, "select * from user where email = '$email'");
-    if (mysqli_fetch_assoc($login) > 0) {
-        $data = mysqli_num_rows($login);
+    if (mysqli_num_rows($login) > 0) {
+        $data = mysqli_fetch_assoc($login);
         if (password_verify($pwd, $data['password'])) {
             $_SESSION['email'] = $email;
             $_SESSION['nama'] = $data['nama'];
             $_SESSION['id'] = $data['id'];
             $_SESSION['login'] = true;
             if (isset($_POST['ingat'])) {
-
-                setscookie('login', 'true', strtotime('+5 years'));
+                setcookie('login', 'true', strtotime('+5 years'));
             }
+
+            $flag = true;
         }
     }
 }

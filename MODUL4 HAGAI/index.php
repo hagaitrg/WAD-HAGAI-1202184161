@@ -1,27 +1,30 @@
 <?php
+session_start();
+
 include("logic.php");
 
 $db = new logic();
 
-if (isset($_COOKIE['email'])) {
-    $nama = $_COOKIE['nama'];
+if (isset($_SESSION['login'])) {
+    $nama = $_SESSION['nama'];
 } else {
-    header("Location:index.php");
+    header("Location:login.php");
 }
 
 
 if (isset($_POST['tambah'])) {
-    $id = $_COOKIE['id'];
+    $id = $_SESSION['id'];
     $barang = $_POST['barang'];
     $harga = $_POST['harga'];
 
     $cek = $db->create_cart($id, $barang, $harga);
 
     if ($cek > 0) {
+        $flag = true;
     }
 }
 
-$nav = $_REQUEST['color'] ?? 'light';
+$nav = $_COOKIE['colors'] ?? 'light';
 
 ?>
 
@@ -99,7 +102,7 @@ $nav = $_REQUEST['color'] ?? 'light';
                     </div>
                     <div class="card-group">
                         <div class="card">
-                            <img src="/assetsimg/img1.jpg" class="card-img-top" height="350px">
+                            <img src="./assets/img/img1.jpg" class="card-img-top" height="350px">
                             <div class="card-body">
                                 <h4 class="card-title">YUJA NIACIN 30 DAYS BLEMISH CARE SERUM</h4>
                                 <p class="card-text">Produk terbaru dari somebymi yang memiliki manfaat untuk WHitening
@@ -119,7 +122,7 @@ $nav = $_REQUEST['color'] ?? 'light';
                             </form>
                         </div>
                         <div class="card">
-                            <img src="/assets/img/img2.jpg" class="card-img-top" height="350px">
+                            <img src="./assets/img/img2.jpg" class="card-img-top" height="350px">
                             <div class="card-body" style="height: 285px;">
                                 <h5 class="card-title">SOMEBYMI Snail Truecica Miracle Rpair Cream</h5>
                                 <p class="card-text">Sebagai pelembap, krim ini mampu memberikan kelembapan yang
@@ -138,7 +141,7 @@ $nav = $_REQUEST['color'] ?? 'light';
                             </form>
                         </div>
                         <div class="card">
-                            <img src="/assets/img/img3.jpg" class="card-img-top" height="350px">
+                            <img src="./assets/img/img3.jpg" class="card-img-top" height="350px">
                             <div class="card-body" style="height: 285px;">
                                 <h5 class="card-title">30 DAYS MIRACLE TONER</h5>
                                 <p class="card-text">Dengan kandungan AHA, BHA, dan PHA bekerja secara efektif untuk

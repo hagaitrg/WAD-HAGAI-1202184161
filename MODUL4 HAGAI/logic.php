@@ -11,8 +11,8 @@ class logic
     public function __construct()
     {
         $this->conn = mysqli_connect($this->host, $this->user, $this->pwd, $this->db);
-        if (mysqli_connect()) {
-            echo "Koneksi DB gagl : " . mysqli_connect();
+        if (mysqli_connect_error()) {
+            echo "Koneksi DB gagl : " . mysqli_connect_error();
         }
     }
 
@@ -25,7 +25,7 @@ class logic
         $pwd2 = $data['password2'];
 
         $cek = mysqli_query($this->conn, "select nama from user where nama = '$name'");
-        if (mysqli_fetch_array($cek)) {
+        if (mysqli_fetch_assoc($cek)) {
             echo
                 "
             <script> 
@@ -45,7 +45,7 @@ class logic
             return false;
         }
 
-        $pwd = password_verify($pwd, PASSWORD_DEFAULT);
+        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
         mysqli_query($this->conn, "insert into user values('','$name','$email','$nohp','$pwd')");
 

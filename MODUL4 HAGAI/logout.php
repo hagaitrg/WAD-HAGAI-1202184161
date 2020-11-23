@@ -1,7 +1,10 @@
 <?php
+session_start();
 
-if (session_abort()) {
-    setsession('login', '', time() - 3600);
+
+if (session_destroy()) {
+    setcookie('login', '', time() - 3600);
+    $flag = true;
 }
 
 ?>
@@ -21,7 +24,7 @@ if (session_abort()) {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand text-secondary" href="#">WAD Beauty</a>
+        <a class="navbar-brand text-secondary" href="index.php">WAD Beauty</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
