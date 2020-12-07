@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,24 +21,24 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('product', [ProductsController::class, 'index']);
+Route::get('product', [ProductsController::class, '']);
 
 Route::get('/insert', function () {
     return view('insert');
 });
 
-Route::post('/proses_product', [ProductsController::class, 'insert']);
+Route::post('/proses_product', [ProductsController::class, '']);
 
-Route::get('/update/{id}', [ProductsController::class, 'edit']);
+Route::get('/update/{id}', [ProductsController::class, '']);
 
-Route::patch('/edit/{id}', [ProductsController::class, 'update']);
+Route::patch('/edit/{id}', [ProductsController::class, '']);
 
-Route::delete('/delete/{id}', [ProductsController::class, 'destroy']);
+Route::delete('/delete/{id}', [ProductsController::class, '']);
 
-Route::get('/proses/{id}', [OrdersController::class, 'show']);
+Route::get('/proses/{id}', [OrdersController::class, '']);
 
-Route::post('/prosesOrder', [OrdersController::class, 'create']);
+Route::post('/prosesOrder', [OrdersController::class, '']);
 
-Route::get('/history', [OrdersController::class, 'history']);
+Route::get('/history', [OrdersController::class, '']);
 
-Route::get('/order', [OrdersController::class, 'index']);
+Route::get('/order', [OrdersController::class, '']);
