@@ -50,7 +50,6 @@ class OrdersController extends Controller
 
     public function history()
     {
-
         // $getInfo = Products::with(['hasManyOrder'])->get();
         $getInfo = Orders::with(['belongsToProduct'])->get();
         // dd($getInfo[0]->belongsToProduct->name);
