@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -11,7 +10,7 @@ class ProductsController extends Controller
     {
         $img = time() . '.' . $request->img->extension();
 
-        $request->img->move(public_path('img/'), $img);
+        $request->img->move(public_path(), $img);
 
         Products::insert([
             'name' => $request->name,
@@ -21,21 +20,21 @@ class ProductsController extends Controller
             'img_path' => $img
         ]);
 
-        return redirect('/product');
+        return redirect();
     }
 
     public function index()
     {
         $products = Products::all();
 
-        return view('product', compact('products'));
+        return view(compact('products'));
     }
 
     public function edit($id)
     {
         $product = Products::find($id);
 
-        return view('update', compact('product'));
+        return view(compact('product'));
     }
 
     public function update($id, Request $request)
@@ -50,7 +49,7 @@ class ProductsController extends Controller
         } else {
             $img = time() . '.' . $request->imgChange->extension();
 
-            $request->imgChange->move(public_path('img/'), $img);
+            $request->imgChange->move(public_path(), $img);
             Products::where('id', $id)->update([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -60,13 +59,13 @@ class ProductsController extends Controller
             ]);
         }
 
-        return redirect('/product');
+        return redirect();
     }
 
     public function destroy($id)
     {
         Products::where('id', $id)->delete();
 
-        return redirect('/product');
+        return redirect();
     }
 }
