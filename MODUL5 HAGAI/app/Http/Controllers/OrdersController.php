@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Orders;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -11,14 +13,14 @@ class OrdersController extends Controller
     {
         $orders = Products::get();
 
-        return view(compact('orders'));
+        return view('order', compact('orders'));
     }
 
     public function show($id)
     {
         $order = Products::find($id);
 
-        return view(compact('order'));
+        return view('/proses', compact('order'));
     }
 
     public function create(Request $request)
@@ -43,7 +45,7 @@ class OrdersController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect('' . $request->product_id);
+        return redirect('proses/' . $request->product_id);
     }
 
     public function history()
@@ -51,6 +53,6 @@ class OrdersController extends Controller
         // $getInfo = Products::with(['hasManyOrder'])->get();
         $getInfo = Orders::with(['belongsToProduct'])->get();
         // dd($getInfo[0]->belongsToProduct->name);
-        return view(compact('getInfo'));
+        return view('history', compact('getInfo'));
     }
 }
